@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+class NetworkFrequency(models.Model):
+    timestamp = models.DateTimeField()
+    frequency = models.FloatField()
+    cleaned = models.BooleanField(default=True)
+    anomaly_detected = models.BooleanField(default=False)
