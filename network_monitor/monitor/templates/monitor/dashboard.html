@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Monitor</title>
+</head>
+<body>
+    <h1>Network Frequency Anomaly Detection</h1>
+    <ul id="alerts"></ul>
+
+    <script>
+        const ws = new WebSocket('ws://localhost:8000/ws/alerts/');
+        ws.onmessage = function(event) {
+            const message = JSON.parse(event.data).message;
+            const alertList = document.getElementById("alerts");
+            const newAlert = document.createElement("li");
+            newAlert.innerText = message;
+            alertList.appendChild(newAlert);
+        };
+    </script>
+</body>
+</html>
